@@ -1,13 +1,14 @@
 import * as React from 'react';
+import { ModalContext } from '@/contexts/ModalContext';
 import CheckBox from './CheckBox';
 import TextArea from './TextArea';
 import { addAcheivement } from '../utils/apiRequests';
 import { AchievementContext } from '../contexts/AchievementContext';
-import { ModalContext } from '@/contexts/ModalContext';
 
 const AcheivementForm = () => {
   // TODO convert to useReducer plz
-  const { refreshAcheivementState } = React.useContext(AchievementContext);
+  const { refreshAcheivementState, setCurrentId } =
+    React.useContext(AchievementContext);
   const [canShare, setCanshare] = React.useState(false);
   const [description, setDescription] = React.useState(``);
   const [impact, setImpact] = React.useState(
@@ -38,6 +39,7 @@ const AcheivementForm = () => {
         challenges,
         refresh: refreshAcheivementState,
         closeModal,
+        setCurrentId,
       });
     }
   };

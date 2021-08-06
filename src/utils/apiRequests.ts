@@ -7,6 +7,7 @@ export const addAcheivement = async ({
   challenges,
   refresh,
   closeModal,
+  setCurrentId,
 }) => {
   const user = supabase.auth.user();
   const { data, error } = await supabase.from(`achievements`).insert([
@@ -22,8 +23,10 @@ export const addAcheivement = async ({
     console.error(error);
   }
   if (data) {
+    console.log({ data });
     refresh();
     closeModal();
+    setCurrentId(data[0].id);
   }
   return data;
 };
