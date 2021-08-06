@@ -1,18 +1,29 @@
 import * as React from 'react';
 import { AchievementContext } from '@/contexts/AchievementContext';
 import AchievementUpdater from './AchievementUpdater';
+import EmptyAcheivement from './EmptyAcheivement';
 
-const SingleAchievement = () => {
-  const { refreshAcheivementState, userAcheivements } =
+const SingleAchievement = ({ open, setOpen }) => {
+  const { refreshAcheivementState, userAcheivements, currentId } =
     React.useContext(AchievementContext);
   console.log(userAcheivements);
   const [currentAchievement, setCurrentAchievement] = React.useState({});
   React.useEffect(() => {
     setCurrentAchievement(
-      userAcheivements.find((achievement) => achievement.id === 5),
+      userAcheivements.find((achievement) => achievement.id === currentId),
     );
-  }, [userAcheivements]);
-  if (!currentAchievement) return <p>Error...</p>;
+  }, [userAcheivements, currentId]);
+  if (!currentAchievement) {
+    return (
+      <div className="space-y-6 lg:col-start-1 lg:col-span-2">
+        <section aria-labelledby="current-achievement">
+          <div className="bg-white shadow sm:rounded-lg">
+            <EmptyAcheivement />
+          </div>
+        </section>
+      </div>
+    );
+  }
   const { description, challenges, impact, id } = currentAchievement;
   return (
     <div className="space-y-6 lg:col-start-1 lg:col-span-2">
@@ -34,18 +45,24 @@ const SingleAchievement = () => {
             label="Description"
             id={id}
             refresh={refreshAcheivementState}
+            open={open}
+            setOpen={setOpen}
           />
           <AchievementUpdater
             content={challenges}
             label="Challenges"
             id={id}
             refresh={refreshAcheivementState}
+            open={open}
+            setOpen={setOpen}
           />
           <AchievementUpdater
             content={impact}
             label="Impact"
             id={id}
             refresh={refreshAcheivementState}
+            open={open}
+            setOpen={setOpen}
           />
         </div>
       </section>

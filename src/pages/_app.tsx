@@ -12,6 +12,7 @@ import { useRouter } from 'next/router';
 import { Session, AuthChangeEvent } from '@supabase/gotrue-js/src/lib/types';
 import Nav from '@/components/Nav';
 import { AchievementProvider } from '@/contexts/AchievementContext';
+import { ModalProvider } from '@/contexts/ModalContext';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -62,7 +63,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     <>
       <Nav authState={authState} handleSignOut={handleSignOut} />
       <AchievementProvider>
-        <Component {...pageProps} />
+        <ModalProvider>
+          <Component {...pageProps} />
+        </ModalProvider>
       </AchievementProvider>
     </>
   );

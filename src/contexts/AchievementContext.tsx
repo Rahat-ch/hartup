@@ -13,7 +13,7 @@ export function AchievementProvider({ children }) {
   const refreshAcheivementState = () => {
     getAcheivements(setUserAcheivments);
   };
-  React.useEffect(() => {
+  React.useEffect(() => { 
     refreshAcheivementState();
   }, []);
   return (

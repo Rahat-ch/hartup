@@ -5,7 +5,8 @@ export const addAcheivement = async ({
   isallowedontimeline,
   impact,
   challenges,
-  setState,
+  refresh,
+  closeModal,
 }) => {
   const user = supabase.auth.user();
   const { data, error } = await supabase.from(`achievements`).insert([
@@ -20,7 +21,10 @@ export const addAcheivement = async ({
   if (error) {
     console.error(error);
   }
-  setState(data);
+  if (data) {
+    refresh();
+    closeModal();
+  }
   return data;
 };
 

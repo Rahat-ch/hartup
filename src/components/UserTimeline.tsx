@@ -1,16 +1,14 @@
 import * as React from 'react';
 import { UserIcon } from '@heroicons/react/solid';
+import { ModalContext } from '@/contexts/ModalContext';
 import { AchievementContext } from '../contexts/AchievementContext';
 import AcheievementModal from './AcheievementModal';
 
 const UserTimeline = () => {
-  const [open, setOpen] = React.useState(false);
-  function closeModal() {
-    setOpen(false);
-  }
-  console.log(`sup`);
-  const { userAcheivements } = React.useContext(AchievementContext);
-  console.log(userAcheivements);
+  const { open, openModal, closeModal } = React.useContext(ModalContext);
+  const { userAcheivements, setCurrentId, currentId } =
+    React.useContext(AchievementContext);
+    console.log({currentId})
   return (
     <section
       aria-labelledby="timeline-title"
@@ -50,6 +48,7 @@ const UserTimeline = () => {
                           <div>
                             <button
                               type="button"
+                              onClick={() => setCurrentId(item.id)}
                               className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                             >
                               <p className="text-sm text-left text-gray-500">
@@ -73,7 +72,7 @@ const UserTimeline = () => {
         <div className="mt-6 flex flex-col justify-stretch">
           <button
             type="button"
-            onClick={() => setOpen(true)}
+            onClick={openModal}
             className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
           >
             Add More Achievements

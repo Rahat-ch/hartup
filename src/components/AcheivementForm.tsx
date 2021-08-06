@@ -2,9 +2,12 @@ import * as React from 'react';
 import CheckBox from './CheckBox';
 import TextArea from './TextArea';
 import { addAcheivement } from '../utils/apiRequests';
+import { AchievementContext } from '../contexts/AchievementContext';
+import { ModalContext } from '@/contexts/ModalContext';
 
 const AcheivementForm = () => {
   // TODO convert to useReducer plz
+  const { refreshAcheivementState } = React.useContext(AchievementContext);
   const [canShare, setCanshare] = React.useState(false);
   const [description, setDescription] = React.useState(``);
   const [impact, setImpact] = React.useState(
@@ -16,6 +19,7 @@ const AcheivementForm = () => {
   const [showMore, setShowMore] = React.useState(false);
   const [isDisabled, setIsDisabled] = React.useState(true);
   const [disabledMessage, setDisabledMessage] = React.useState(``);
+  const { closeModal } = React.useContext(ModalContext);
   // oh god that's alot of state
   const setStuff = (stuff) => console.log(stuff);
   React.useEffect(() => {
@@ -32,7 +36,8 @@ const AcheivementForm = () => {
         isallowedontimeline: canShare,
         impact,
         challenges,
-        setState: setStuff,
+        refresh: refreshAcheivementState,
+        closeModal,
       });
     }
   };
