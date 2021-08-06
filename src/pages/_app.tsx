@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { AppProps } from 'next/app';
 import 'tailwindcss/tailwind.css';
 import {
   SIGNED_IN,
@@ -8,24 +9,34 @@ import {
 } from '@/utils/constants';
 import { supabase } from '@/utils/supabaseclient';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
+import { Session, AuthChangeEvent } from '@supabase/gotrue-js/src/lib/types';
+import Nav from '@/components/Nav';
+import { AchievementProvider } from '@/contexts/AchievementContext';
 
-export default function MyApp({ Component, pageProps }) {
+export default function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const [authState, setAuthState] = React.useState(NOT_AUTHENTICATOED);
   async function checkUser() {
     const user = await supabase.auth.user();
     if (user) {
-      setAuthState(`authenticated`);
+      setAuthState(AUTHENTICATED);
     }
   }
-  async function handleAuthChange(event, session) {
+  async function handleAuthChange(
+    event: AuthChangeEvent,
+    session: Session | null,
+  ) {
     await fetch(`/api/auth`, {
       method: `POST`,
       headers: new Headers({ 'Content-Type': `application/json` }),
       credentials: `same-origin`,
       body: JSON.stringify({ event, session }),
     });
+  }
+  async function handleSignOut() {
+    const { error } = await supabase.auth.signOut();
+    if (error) console.log(error);
+    if (!error) router.push(`/`);
   }
   React.useEffect(() => {
     const { data: authListener } = supabase.auth.onAuthStateChange(
@@ -42,23 +53,17 @@ export default function MyApp({ Component, pageProps }) {
     );
     checkUser();
     return () => {
-      authListener.unsubscribe();
+      if (authListener !== null) {
+        authListener.unsubscribe();
+      }
     };
-  }, []);
+  }, [router]);
   return (
     <>
-      <nav>
-        <Link href="/">
-          <a>Home</a>
-        </Link>
-        {authState === NOT_AUTHENTICATOED && (
-          <Link href="/auth">
-            <a>Sign In</a>
-          </Link>
-        )}
-        {authState === AUTHENTICATED && <button>Sign out</button>}
-      </nav>
-      <Component {...pageProps} />
+      <Nav authState={authState} handleSignOut={handleSignOut} />
+      <AchievementProvider>
+        <Component {...pageProps} />
+      </AchievementProvider>
     </>
   );
 }

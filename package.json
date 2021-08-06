@@ -1,9 +1,9 @@
 {
-  "name": "typescript-nextjs-starter",
-  "description": "A TypeScript starter for Next.js that includes all you need to build amazing projects",
+  "name": "hartup",
+  "description": "Supabase Hackathon project",
   "version": "1.0.0",
   "private": true,
-  "author": "João Pedro Schmitz <hey@joaopedro.dev> (@jpedroschmitz)",
+  "author": "Rahat Chowdhury <rahat@rahatcodes.com> (@rahatcodes)",
   "license": "MIT",
   "keywords": [
     "nextjs",
@@ -27,8 +27,12 @@
     ]
   },
   "dependencies": {
+    "@headlessui/react": "1.4.0",
+    "@heroicons/react": "1.0.3",
+    "@supabase/gotrue-js": "1.17.0",
     "@supabase/supabase-js": "1.21.0",
     "@tailwindcss/forms": "0.3.3",
+    "luxon": "2.0.1",
     "next": "11.0.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
