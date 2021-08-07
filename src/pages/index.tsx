@@ -178,13 +178,14 @@ export default function Home() {
                   fill="url(#de316486-4a29-4312-bdfc-fbce2132a2c1)"
                 />
               </svg>
-              <div className="relative text-base mx-auto max-w-prose lg:max-w-none mb-4">
+              <div className="relative text-base mx-auto max-w-prose lg:max-w-none">
                 <figure>
                   <div className="aspect-w-12 aspect-h-7 lg:aspect-none">
                     <Image
-                      className="rounded-lg shadow-lg object-cover object-center"
+                      className="rounded-lg shadow-lg object-cover object-center -m-16"
                       src="/product1.png"
                       alt="hartup dashboard"
+                      objectFit="contain"
                       width={1184}
                       height={1376}
                     />
@@ -199,6 +200,7 @@ export default function Home() {
                       className="rounded-lg shadow-lg object-cover object-center"
                       src="/product2.png"
                       alt="hartup dashboard"
+                      objectFit="contain"
                       width={1184}
                       height={1376}
                     />

@@ -25,7 +25,7 @@ export async function getServerSideProps({
   return {
     props: {
       user: {
-        email: user.email || ``,
+        email: user?.email || ``,
       },
     },
   };
