@@ -181,10 +181,10 @@ export default function Home() {
               <div className="relative text-base mx-auto max-w-prose lg:max-w-none mb-4">
                 <figure>
                   <div className="aspect-w-12 aspect-h-7 lg:aspect-none">
-                    <img
+                    <Image
                       className="rounded-lg shadow-lg object-cover object-center"
                       src="/product1.png"
-                      alt="Whitney leaning against a railing on a downtown street"
+                      alt="hartup dashboard"
                       width={1184}
                       height={1376}
                     />
@@ -195,10 +195,10 @@ export default function Home() {
               <div className="relative text-base mx-auto max-w-prose lg:max-w-none">
                 <figure>
                   <div className="aspect-w-12 aspect-h-7 lg:aspect-none">
-                    <img
+                    <Image
                       className="rounded-lg shadow-lg object-cover object-center"
                       src="/product2.png"
-                      alt="Whitney leaning against a railing on a downtown street"
+                      alt="hartup dashboard"
                       width={1184}
                       height={1376}
                     />
@@ -217,9 +217,9 @@ export default function Home() {
               </div>
               <div className="mt-5 prose prose-indigo text-gray-500 mx-auto lg:max-w-none lg:row-start-1 lg:col-start-1">
                 <p>
-                  The Timeline is a visual representation of the impact you've
-                  had throughout your career. See how many wins, challenges, and
-                  lessons you've overcome over time.
+                  The Timeline is a visual representation of the impact
+                  you&apos;ve had throughout your career. See how many wins,
+                  challenges, and lessons you&apos;ve overcome over time.
                 </p>
                 <p>
                   Achievements information is where you do your deep dive and

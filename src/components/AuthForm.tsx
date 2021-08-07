@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import * as React from 'react';
+import Image from 'next/image';
 import { supabase } from '../utils/supabaseclient';
 
 const AuthForm: React.FC = () => {
@@ -19,11 +20,14 @@ const AuthForm: React.FC = () => {
   return (
     <div className="max-w-md w-full space-y-8">
       <div>
-        <img
+        <Image
           className="mx-auto h-48"
           src="/hartuplogo.png"
           alt="Hartup"
+          width={200}
+          height={200}
         />
+
         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
           Sign in to your account
         </h2>
