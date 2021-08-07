@@ -64,3 +64,17 @@ export const upDateAcheivements = async ({
   }
   return data || null;
 };
+
+export const deleteAchievments = async ({ id, refresh }) => {
+  const { data, error } = await supabase
+    .from(`achievements`)
+    .delete()
+    .match({ id });
+  if (error) {
+    console.log(error);
+    return error;
+  }
+  if (data) {
+    refresh();
+  }
+};

@@ -1,14 +1,15 @@
 import * as React from 'react';
-import { UserIcon } from '@heroicons/react/solid';
+import { UserIcon, TrashIcon } from '@heroicons/react/solid';
 import { ModalContext } from '@/contexts/ModalContext';
+import { deleteAchievments } from '@/utils/apiRequests';
 import { AchievementContext } from '../contexts/AchievementContext';
 import AcheievementModal from './AcheievementModal';
 
 const UserTimeline = () => {
   const { open, openModal, closeModal } = React.useContext(ModalContext);
-  const { userAcheivements, setCurrentId, currentId } =
+  const { userAcheivements, setCurrentId, currentId, refreshAcheivementState } =
     React.useContext(AchievementContext);
-    console.log({currentId})
+  console.log({ currentId });
   return (
     <section
       aria-labelledby="timeline-title"
@@ -57,9 +58,21 @@ const UserTimeline = () => {
                             </button>
                           </div>
                           <div className="text-right text-sm whitespace-nowrap text-gray-500">
-                            <time dateTime={item.inserted_at}>
-                              {month}/{day}
-                            </time>
+                            <button
+                              type="button"
+                              onClick={() =>
+                                deleteAchievments({
+                                  id: item.id,
+                                  refresh: refreshAcheivementState,
+                                })
+                              }
+                              className="inline-flex items-center p-1 border border-transparent rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            >
+                              <TrashIcon
+                                className="h-5 w-5"
+                                aria-hidden="true"
+                              />
+                            </button>
                           </div>
                         </div>
                       </div>
