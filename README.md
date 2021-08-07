@@ -1,34 +1,9 @@
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/26466516/118417547-e9409d00-b68a-11eb-8162-6afccf9288a9.png" alt="Next.js TypeScript Starter">
-</p>
+A micro saas product built in three days 🔥
 
-<p align="center">
-  <img src="https://img.shields.io/static/v1?label=PRs&message=welcome&style=for-the-badge&color=5e17eb&labelColor=000000" alt="PRs welcome!" />
+A bragging document and more check out the site below:
+https://www.hartup.io/
 
-  <img alt="License" src="https://img.shields.io/github/license/jpedroschmitz/typescript-nextjs-starter?style=for-the-badge&color=5e17eb&labelColor=000000">
-
-  <a href="https://twitter.com/intent/follow?screen_name=jpedroschmitz">
-    <img src="https://img.shields.io/twitter/follow/jpedroschmitz?style=for-the-badge&color=5e17eb&labelColor=000000" alt="Follow @jpedroschmitz" />
-  </a>
-</p>
-
-<br>
-
-A TypeScript starter for Next.js that includes all you need to build amazing projects 🔥
-
-- 📏 **ESLint** — Pluggable JavaScript linter
-- 💖 **Prettier** - Opinionated Code Formatter
-- 🐶 **Husky** — Use git hooks with ease
-- 📄 **Commitizen** - Conventional commit messages CLI
-- 🚓 **Commitlint** - Lint commit messages
-- 🖌 **Renovate** - Dependency update tool
-- 🚫 **lint-staged** - Run linters against staged git files
-- 👷 **PR Workflow** - Run Type Check & Linters on pull requests
-- 🗂 **Absolute import** - Import folders and files using the `@` prefix
-
-## 🚀 Getting started
-
-The best way to start with this template is using `create-next-app`.
+Built with `create-next-app` and the template below.
 
 ```
 npx create-next-app ts-next -e https://github.com/jpedroschmitz/typescript-nextjs-starter
@@ -56,4 +31,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ---
 
-Made with ♥ by João Pedro Schmitz
+Made with ♥ by Rahat Chowdhury
